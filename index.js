@@ -1,6 +1,6 @@
 const express = require('express');
 const jwt = require('jsonwebtoken');
-
+const images = require('./images.json');
 const app = express();
 const PORT = 3000;
 const SECRET_KEY = 'my_secret_key';
@@ -32,7 +32,7 @@ app.post('/login', (req, res) => {
 
 // Details API with authentication middleware
 app.get('/documents', authenticateToken, (req, res) => {
-  res.json(documents);
+  res.json(images);
 });
 
 // Middleware for authenticating the JWT token
