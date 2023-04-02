@@ -1,12 +1,16 @@
 const express = require('express');
 const jwt = require('jsonwebtoken');
 const images = require('./images.json');
+const cors = require('cors'); // Import the cors middleware
 const app = express();
 const PORT = 3000;
 const SECRET_KEY = 'my_secret_key';
 
 // Middleware for parsing JSON data
 app.use(express.json());
+
+// Use the cors middleware to allow cross-origin requests from any domain
+app.use(cors());
 
 // In-memory database of documents
 const documents = [
@@ -53,4 +57,3 @@ function authenticateToken(req, res, next) {
 app.listen(PORT, () => {
   console.log(`Server listening on port ${PORT}`);
 });
-
